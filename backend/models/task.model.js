@@ -6,6 +6,11 @@ const taskSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    type:{
+      type: String,
+      required: true,
+      default: "Task"
+    },
     isDone: {
       type: Boolean,
       default: false,
