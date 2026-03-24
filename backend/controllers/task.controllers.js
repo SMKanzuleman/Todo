@@ -2,7 +2,7 @@ const Task=require("../models/task.model")
 
 const getAllTasks=async(req,res)=>{
   try {
-    const tasks=await Task.find({})
+    const tasks=await Task.find({}).sort({createdAt:-1})
     res.status(200).json(tasks)
   } catch (error) {
     res.status(500).json({message:error.message})
@@ -39,7 +39,7 @@ const deleteAllTasks=async(req,res)=>{
 }
 const createNewTask=async(req,res)=>{
     try {
-      const task = Task.create(req.body);
+      const task = await Task.create(req.body);
       console.log(task);
       res.status(200).json(task);
     } catch (error) {

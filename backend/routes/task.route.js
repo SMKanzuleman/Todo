@@ -20,7 +20,7 @@ router.get("/:id", getsingleTask)
 
 //Add a new task
 
-router.put("/",createNewTask)
+router.post("/",createNewTask)
 
 //update single task
 
@@ -33,6 +33,5 @@ router.delete("/:id",deleteSingleTask)
 //Delete all tasks
 
 router.delete("/",deleteAllTasks)
-
 
 module.exports = router;

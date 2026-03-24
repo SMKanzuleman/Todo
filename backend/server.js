@@ -12,11 +12,11 @@ const PORT = process.env.BACKEND_PORT || 5000;
 
 
 //!Middlewares
-app.use(express.json());
-app.use("/tasks", taskRoute);
 app.use(cors({
   origin: "http://localhost:3000"
 }))
+app.use(express.json());
+app.use("/tasks", taskRoute);
 console.log("frontend conneted")
 
 //! Database Connection
