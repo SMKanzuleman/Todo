@@ -11,7 +11,6 @@ import { ToastContainer, toast } from "react-toastify";
 const API_URL = "http://localhost:4000/tasks";
 
 const App = () => {
-  //States
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
   const [type, settype] = useState("Task");
@@ -58,7 +57,6 @@ const App = () => {
     }
     console.log("Task:", task, "type:", type);
   };
-
   const deltask= async (id)=>{
     try {
       if(window.confirm("Do you want to delete this task?")){
@@ -84,8 +82,7 @@ const App = () => {
       if(window.confirm("Are you sure you want to delete all tasks?")){
         await axios.delete(API_URL);
         fetchTasks();
-      }
-      
+      } 
     } catch (error) {
       console.log(error);
     }
