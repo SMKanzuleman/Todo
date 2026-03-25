@@ -15,6 +15,8 @@ const App = () => {
   const [task, setTask] = useState("");
   const [type, settype] = useState("Task");
 
+  //--------------------------------------HandlerFunction------------------------------
+
   const fetchTasks = async () => {
     try {
       const tasks = await axios.get(API_URL);
@@ -44,7 +46,6 @@ const App = () => {
             height: "25px",
           },
         });
-
       } else {
         await axios.post(API_URL, { task, type });
         setTask("");
@@ -57,36 +58,36 @@ const App = () => {
     }
     console.log("Task:", task, "type:", type);
   };
-  const deltask= async (id)=>{
+  const deltask = async (id) => {
     try {
-      if(window.confirm("Do you want to delete this task?")){
+      if (window.confirm("Do you want to delete this task?")) {
         await axios.delete(`${API_URL}/${id}`);
         fetchTasks();
       }
     } catch (error) {
-      toast.error(error)
+      toast.error(error);
     }
-  }
+  };
 
-  const markDone=async(id,currentIdx)=>{
+  const markDone = async (id, currentIdx) => {
     try {
       await axios.put(`${API_URL}/${id}`, { isDone: !currentIdx });
       fetchTasks();
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
+  };
 
-  const delALL=async()=>{
+  const delALL = async () => {
     try {
-      if(window.confirm("Are you sure you want to delete all tasks?")){
+      if (window.confirm("Are you sure you want to delete all tasks?")) {
         await axios.delete(API_URL);
         fetchTasks();
-      } 
+      }
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col justify-start items-center min-h-screen w-full bg-gray-950 py-10 gap-5">
@@ -207,4 +208,5 @@ const App = () => {
     </div>
   );
 };
+
 export default App;

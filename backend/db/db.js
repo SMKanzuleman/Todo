@@ -3,10 +3,10 @@ require("dotenv").config();
 
 const dbURL = process.env.MONGODB_URL;
 const connectDb = async () => {
-  mongoose
+  await mongoose
     .connect(dbURL)
     .then(() => {
-      console.log("Database connected.Congrats!!!❤️");
+      console.log("MongoDB Atlas connected.Congrats!!!❤️");
     })
     .catch((err) => {
       console.log(err);
