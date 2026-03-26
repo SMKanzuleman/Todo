@@ -1,5 +1,3 @@
-const dns = require("node:dns/promises");
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
 const express = require("express");
 const mongoose = require("mongoose");
 const axios = require("axios");
