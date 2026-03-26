@@ -8,7 +8,7 @@ import { FiDelete } from "react-icons/fi";
 import { FaCircleCheck } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
 
-const API_URL = "http://localhost:4000/tasks";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
