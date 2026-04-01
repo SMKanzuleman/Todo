@@ -7,6 +7,7 @@ import { MdDelete } from "react-icons/md";
 import { FiDelete } from "react-icons/fi";
 import { FaCircleCheck } from "react-icons/fa6";
 import { ToastContainer, toast } from "react-toastify";
+import Loading from "./components/loading";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -14,6 +15,7 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const [task, setTask] = useState("");
   const [type, settype] = useState("Task");
+  const [loading, setLoading] = useState(true);
 
   //--------------------------------------HandlerFunction------------------------------
 
@@ -21,7 +23,9 @@ const App = () => {
     try {
       const tasks = await axios.get(API_URL);
       setTasks(tasks.data);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   };
@@ -90,6 +94,8 @@ const App = () => {
   };
 
   return (
+    <>
+    {loading? <Loading/> : 
     <div className="flex flex-col justify-start items-center min-h-screen w-full bg-gray-950 py-10 gap-5">
       j{/* Header */}
       <div className="lg:w-[70%] w-[85%] h-25 bg-gray-900/60 flex justify-between px-10 items-center rounded-xl">
@@ -206,6 +212,8 @@ const App = () => {
       </ul>
       <ToastContainer />
     </div>
+    }
+    </>
   );
 };
 
